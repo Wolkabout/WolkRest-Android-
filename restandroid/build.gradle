@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def AAVersion = '4.0.0'
+
+dependencies {
+    // Android annotations
+    provided "org.androidannotations:androidannotations:$AAVersion"
+    provided "org.androidannotations:rest-spring-api:$AAVersion"
+    provided "org.androidannotations:rest-spring:$AAVersion"
+
+    provided 'org.springframework.android:spring-android-rest-template:2.0.0.M1'
+    provided 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        library true
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.wolkabout'
+            artifactId 'restandroid'
+            version '1.0'
+            artifact "$buildDir/outputs/aar/restandroid-release.aar"
+
+            //generate pom nodes for dependencies
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.compile.allDependencies.each { dependency ->
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', dependency.group)
+                    dependencyNode.appendNode('artifactId', dependency.name)
+                    dependencyNode.appendNode('version', dependency.version)
+                }
+            }
+        }
+    }
+
+    //publish to filesystem repo
+    repositories{
+        maven {
+            url "$buildDir/repo"
+        }
+    }
+}
