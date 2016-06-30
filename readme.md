@@ -1,4 +1,4 @@
-# WalkRest
+# WolkRest
 
 REST library written to be used in android applications for WolkAbout Smart IoT Cloud.
 This version requires Android Annotations 4.0.0
