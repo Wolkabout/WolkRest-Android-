@@ -2,14 +2,17 @@ package com.wolkabout.wolkrestandroid.dto;
 
 public class MessageResponse {
 
-    private final Integer id;
-    private final String content;
-    private final Long timestamp;
-    private final String collapseKey;
-    private final String readingType;
-    private final String details;
+    private int id;
+    private String content;
+    private long timestamp;
+    private String collapseKey;
+    private String readingType;
+    private String details;
 
-    public MessageResponse(Integer id, String content, Long timestamp, String collapseKey, String readingType, String details) {
+    public MessageResponse() {
+    }
+
+    public MessageResponse(int id, String content, long timestamp, String collapseKey, String readingType, String details) {
         this.id = id;
         this.content = content;
         this.timestamp = timestamp;
@@ -18,16 +21,63 @@ public class MessageResponse {
         this.details = details;
     }
 
-    public Integer getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getContent() { return content; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public Long getTimestamp() { return timestamp; }
+    public String getContent() {
+        return content;
+    }
 
-    public String getCollapseKey() { return collapseKey; }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-    public String getReadingType() { return readingType; }
+    public long getTimestamp() {
+        return timestamp;
+    }
 
-    public String getDetails() { return details; }
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 
+    public String getCollapseKey() {
+        return collapseKey;
+    }
+
+    public void setCollapseKey(String collapseKey) {
+        this.collapseKey = collapseKey;
+    }
+
+    public String getReadingType() {
+        return readingType;
+    }
+
+    public void setReadingType(String readingType) {
+        this.readingType = readingType;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageResponse{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", timestamp=" + timestamp +
+                ", collapseKey='" + collapseKey + '\'' +
+                ", readingType='" + readingType + '\'' +
+                ", details='" + details + '\'' +
+                '}';
+    }
 }

@@ -4,12 +4,27 @@ import java.util.List;
 
 public class FeedSettingsRequest {
 
-    private final List<FeedSetting> settings;
+    private List<FeedSetting> settings;
+
+    public FeedSettingsRequest() {
+    }
 
     public FeedSettingsRequest(List<FeedSetting> settings) {
         this.settings = settings;
     }
 
-    public List<FeedSetting> getSettings() { return settings; }
+    public List<FeedSetting> getSettings() {
+        return settings;
+    }
 
+    public void setSettings(List<FeedSetting> settings) {
+        this.settings = settings;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedSettingsRequest{" +
+                "settings=" + settings +
+                '}';
+    }
 }

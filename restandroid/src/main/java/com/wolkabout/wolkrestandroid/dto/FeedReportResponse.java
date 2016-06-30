@@ -4,15 +4,18 @@ import java.util.List;
 
 public class FeedReportResponse {
 
-    private final Integer feedId;
-    private final String name;
-    private final String readingType;
-    private final List<AggregatedReadingResponse> readings;
-    private final ReadingResponse min;
-    private final ReadingResponse max;
-    private final List<MessageResponse> messages;
+    private int feedId;
+    private String name;
+    private String readingType;
+    private List<AggregatedReadingResponse> readings;
+    private ReadingResponse min;
+    private ReadingResponse max;
+    private List<MessageResponse> messages;
 
-    public FeedReportResponse(Integer feedId, String name, String readingType, List<AggregatedReadingResponse> readings, ReadingResponse min, ReadingResponse max, List<MessageResponse> messages) {
+    public FeedReportResponse() {
+    }
+
+    public FeedReportResponse(int feedId, String name, String readingType, List<AggregatedReadingResponse> readings, ReadingResponse min, ReadingResponse max, List<MessageResponse> messages) {
         this.feedId = feedId;
         this.name = name;
         this.readingType = readingType;
@@ -22,18 +25,72 @@ public class FeedReportResponse {
         this.messages = messages;
     }
 
-    public Integer getFeedId() { return feedId; }
+    public int getFeedId() {
+        return feedId;
+    }
 
-    public String getName() { return name; }
+    public void setFeedId(int feedId) {
+        this.feedId = feedId;
+    }
 
-    public String getReadingType() { return readingType; }
+    public String getName() {
+        return name;
+    }
 
-    public List<AggregatedReadingResponse> getReadings() { return readings; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public ReadingResponse getMin() { return min; }
+    public String getReadingType() {
+        return readingType;
+    }
 
-    public ReadingResponse getMax() { return max; }
+    public void setReadingType(String readingType) {
+        this.readingType = readingType;
+    }
 
-    public List<MessageResponse> getMessages() { return messages; }
+    public List<AggregatedReadingResponse> getReadings() {
+        return readings;
+    }
 
+    public void setReadings(List<AggregatedReadingResponse> readings) {
+        this.readings = readings;
+    }
+
+    public ReadingResponse getMin() {
+        return min;
+    }
+
+    public void setMin(ReadingResponse min) {
+        this.min = min;
+    }
+
+    public ReadingResponse getMax() {
+        return max;
+    }
+
+    public void setMax(ReadingResponse max) {
+        this.max = max;
+    }
+
+    public List<MessageResponse> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<MessageResponse> messages) {
+        this.messages = messages;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedReportResponse{" +
+                "feedId=" + feedId +
+                ", name='" + name + '\'' +
+                ", readingType='" + readingType + '\'' +
+                ", readings=" + readings +
+                ", min=" + min +
+                ", max=" + max +
+                ", messages=" + messages +
+                '}';
+    }
 }

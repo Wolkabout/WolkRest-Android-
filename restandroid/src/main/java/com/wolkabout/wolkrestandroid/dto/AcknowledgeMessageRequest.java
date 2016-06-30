@@ -2,12 +2,27 @@ package com.wolkabout.wolkrestandroid.dto;
 
 public class AcknowledgeMessageRequest {
 
-    private final Integer id;
+    private int id;
 
-    public AcknowledgeMessageRequest(Integer id) {
+    public AcknowledgeMessageRequest() {
+    }
+
+    public AcknowledgeMessageRequest(int id) {
         this.id = id;
     }
 
-    public Integer getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "AcknowledgeMessageRequest{" +
+                "id=" + id +
+                '}';
+    }
 }

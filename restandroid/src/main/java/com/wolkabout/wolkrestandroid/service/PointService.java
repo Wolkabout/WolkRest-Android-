@@ -1,5 +1,7 @@
 package com.wolkabout.wolkrestandroid.service;
 
+import com.wolkabout.wolkrestandroid.AuthenticationInterceptor;
+import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
 import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.MessageResponse;
 import com.wolkabout.wolkrestandroid.dto.PointWithFeedsResponse;
@@ -15,24 +17,69 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 
 import java.util.List;
 
-@Rest(rootUrl = Preferences.HOST, converters = MappingJackson2HttpMessageConverter.class)
+@Rest(rootUrl = Preferences.HOST,
+        converters = MappingJackson2HttpMessageConverter.class,
+        interceptors = AuthenticationInterceptor.class,
+        responseErrorHandler = DefaultErrorHandler.class)
 public interface PointService {
 
+    /**
+     * Method: GET <br>
+     * URL: /v3/points
+     *
+     * @return A list of {@link PointWithFeedsResponse}s
+     */
     @Get("/v3/points")
     List<PointWithFeedsResponse> getPoints();
 
+    /**
+     * Method: GET <br>
+     * URL: /v3/points/{id}
+     *
+     * @param id Integer path variable
+     * @return {@link PointWithFeedsResponse}
+     */
     @Get("/v3/points/{id}")
     PointWithFeedsResponse getPoint(@Path int id);
 
+
+    /**
+     * Method: GET <br>
+     * URL: /v2/points/{id}/messages?from={from}&to={to}
+     *
+     * @param id Integer path variable
+     * @param from Long request parameter representing a date
+     * @param to Long request parameter representing a date
+     * @return A list of {@link MessageResponse}s
+     */
     @Get("/v2/points/{id}/messages?from={from}&to={to}")
     List<MessageResponse> getUnreadMessagesForPoint(@Path int id, @Path long from, @Path long to);
 
+    /**
+     * Method: PUT <br>
+     * URL: /v2/points/{id}/messages
+     *
+     * @param id Integer path variable
+     */
     @Put("/v2/points/{id}/messages")
     void acknowledgeUnreadMessagesForPoint(@Path int id);
 
+    /**
+     * Method: DELETE <br>
+     * URL: /v2/points/{id}
+     *
+     * @param id Integer path variable
+     */
     @Delete("/v2/points/{id}")
     void deletePoint(@Path int id);
 
+    /**
+     * Method: PUT <br>
+     * URL: /v2/points/{id}
+     *
+     * @param id Integer path variable
+     * @param updatePointBodyDTO {@link UpdatePointBodyDTO} request body
+     */
     @Put("/v2/points/{id}")
     void updatePoint(@Path int id, @Body UpdatePointBodyDTO updatePointBodyDTO);
 

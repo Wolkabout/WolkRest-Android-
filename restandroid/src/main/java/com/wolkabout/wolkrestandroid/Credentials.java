@@ -11,8 +11,8 @@ public interface Credentials {
 
     String refreshToken();
 
-    String accessTokenExpires();
+    long accessTokenExpires();
 
-    String refreshTokenExpires();
+    long refreshTokenExpires();
 
 }

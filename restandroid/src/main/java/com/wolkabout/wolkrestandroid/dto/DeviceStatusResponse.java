@@ -4,12 +4,27 @@ import com.wolkabout.wolkrestandroid.enumeration.DeviceActivationStatus;
 
 public class DeviceStatusResponse {
 
-    private final DeviceActivationStatus activationStatus;
+    private DeviceActivationStatus activationStatus;
+
+    public DeviceStatusResponse() {
+    }
 
     public DeviceStatusResponse(DeviceActivationStatus activationStatus) {
         this.activationStatus = activationStatus;
     }
 
-    public DeviceActivationStatus getActivationStatus() { return activationStatus; }
+    public DeviceActivationStatus getActivationStatus() {
+        return activationStatus;
+    }
 
+    public void setActivationStatus(DeviceActivationStatus activationStatus) {
+        this.activationStatus = activationStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "DeviceStatusResponse{" +
+                "activationStatus=" + activationStatus +
+                '}';
+    }
 }

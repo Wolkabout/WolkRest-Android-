@@ -2,9 +2,12 @@ package com.wolkabout.wolkrestandroid.dto;
 
 public class ChangePasswordRequest {
 
-    private final String email;
-    private final String oldPassword;
-    private final String newPassword;
+    private String email;
+    private String oldPassword;
+    private String newPassword;
+
+    public ChangePasswordRequest() {
+    }
 
     public ChangePasswordRequest(String email, String oldPassword, String newPassword) {
         this.email = email;
@@ -12,10 +15,36 @@ public class ChangePasswordRequest {
         this.newPassword = newPassword;
     }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getOldPassword() { return oldPassword; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getNewPassword() { return newPassword; }
+    public String getOldPassword() {
+        return oldPassword;
+    }
 
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    @Override
+    public String toString() {
+        return "ChangePasswordRequest{" +
+                "email='" + email + '\'' +
+                ", oldPassword='" + oldPassword + '\'' +
+                ", newPassword='" + newPassword + '\'' +
+                '}';
+    }
 }

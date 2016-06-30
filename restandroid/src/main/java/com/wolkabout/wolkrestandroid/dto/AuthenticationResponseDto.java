@@ -6,12 +6,15 @@ import java.util.Date;
 
 public class AuthenticationResponseDto {
 
-    private final String email;
-    private final UserRole role;
-    private final String accessToken;
-    private final Date accessTokenExpires;
-    private final String refreshToken;
-    private final Date refreshTokenExpires;
+    private String email;
+    private UserRole role;
+    private String accessToken;
+    private Date accessTokenExpires;
+    private String refreshToken;
+    private Date refreshTokenExpires;
+
+    public AuthenticationResponseDto() {
+    }
 
     public AuthenticationResponseDto(String email, UserRole role, String accessToken, Date accessTokenExpires, String refreshToken, Date refreshTokenExpires) {
         this.email = email;
@@ -22,16 +25,63 @@ public class AuthenticationResponseDto {
         this.refreshTokenExpires = refreshTokenExpires;
     }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
-    public UserRole getRole() { return role; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getAccessToken() { return accessToken; }
+    public UserRole getRole() {
+        return role;
+    }
 
-    public Date getAccessTokenExpires() { return accessTokenExpires; }
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 
-    public String getRefreshToken() { return refreshToken; }
+    public String getAccessToken() {
+        return accessToken;
+    }
 
-    public Date getRefreshTokenExpires() { return refreshTokenExpires; }
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
 
+    public Date getAccessTokenExpires() {
+        return accessTokenExpires;
+    }
+
+    public void setAccessTokenExpires(Date accessTokenExpires) {
+        this.accessTokenExpires = accessTokenExpires;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public Date getRefreshTokenExpires() {
+        return refreshTokenExpires;
+    }
+
+    public void setRefreshTokenExpires(Date refreshTokenExpires) {
+        this.refreshTokenExpires = refreshTokenExpires;
+    }
+
+    @Override
+    public String toString() {
+        return "AuthenticationResponseDto{" +
+                "email='" + email + '\'' +
+                ", role=" + role +
+                ", accessToken='" + accessToken + '\'' +
+                ", accessTokenExpires=" + accessTokenExpires +
+                ", refreshToken='" + refreshToken + '\'' +
+                ", refreshTokenExpires=" + refreshTokenExpires +
+                '}';
+    }
 }

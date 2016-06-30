@@ -4,20 +4,49 @@ import java.util.List;
 
 public class FeedsRequest {
 
-    private final List<Integer> feedIds;
-    private final Long from;
-    private final Long to;
+    private List<Integer> feedIds;
+    private long from;
+    private long to;
 
-    public FeedsRequest(List<Integer> feedIds, Long from, Long to) {
+    public FeedsRequest() {
+    }
+
+    public FeedsRequest(List<Integer> feedIds, long from, long to) {
         this.feedIds = feedIds;
         this.from = from;
         this.to = to;
     }
 
-    public List<Integer> getFeedIds() { return feedIds; }
+    public List<Integer> getFeedIds() {
+        return feedIds;
+    }
 
-    public Long getFrom() { return from; }
+    public void setFeedIds(List<Integer> feedIds) {
+        this.feedIds = feedIds;
+    }
 
-    public Long getTo() { return to; }
+    public long getFrom() {
+        return from;
+    }
 
+    public void setFrom(long from) {
+        this.from = from;
+    }
+
+    public long getTo() {
+        return to;
+    }
+
+    public void setTo(long to) {
+        this.to = to;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedsRequest{" +
+                "feedIds=" + feedIds +
+                ", from=" + from +
+                ", to=" + to +
+                '}';
+    }
 }

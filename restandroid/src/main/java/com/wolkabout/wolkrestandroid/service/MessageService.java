@@ -1,5 +1,7 @@
 package com.wolkabout.wolkrestandroid.service;
 
+import com.wolkabout.wolkrestandroid.AuthenticationInterceptor;
+import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
 import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.AcknowledgeMessageRequest;
 import com.wolkabout.wolkrestandroid.dto.CountDto;
@@ -14,21 +16,55 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 
 import java.util.List;
 
-@Rest(rootUrl = Preferences.HOST + "/v2/messages", converters = MappingJackson2HttpMessageConverter.class)
+@Rest(rootUrl = Preferences.HOST + "/v2/messages",
+        converters = MappingJackson2HttpMessageConverter.class,
+        interceptors = AuthenticationInterceptor.class,
+        responseErrorHandler = DefaultErrorHandler.class)
 public interface MessageService {
 
+    /**
+     * Method: PUT <br>
+     * URL: /v2/messages/{id}
+     *
+     * @param id Integer path variable
+     * @param request {@link AcknowledgeMessageRequest} request body
+     */
     @Put("/{id}")
     void acknowledgeUnreadMessage(@Path int id, @Body AcknowledgeMessageRequest request);
 
+    /**
+     * Method: GET <br>
+     * URL: /v2/messages/unread
+     *
+     * @return A list of {@link MessageWithNameDto}s
+     */
     @Get("/unread")
     List<MessageWithNameDto> getAllUnreadMessages();
 
+    /**
+     * Method: GET <br>
+     * URL: /v2/messages/unread/count
+     *
+     * @return {@link CountDto}
+     */
     @Get("/unread/count")
     CountDto getAllUnreadMessageCount();
 
+    /**
+     * Method: PUT <br>
+     * URL: /v2/messages/unread
+     */
     @Put("/unread")
     void aknowledgeAllUnreadMessages();
 
+    /**
+     * Method: GET <br>
+     * URL: /v2/messages?from={from}&pageSize={pageSize}
+     *
+     * @param from Long request parameter representing a date
+     * @param pageSize Integer request parameter
+     * @return A list of {@link MessageWithNameDto}s
+     */
     @Get("?from={from}&pageSize={pageSize}")
     List<MessageWithNameDto> getMessagesForUserPaged(@Path long from, @Path int pageSize);
 

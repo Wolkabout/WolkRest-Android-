@@ -2,16 +2,38 @@ package com.wolkabout.wolkrestandroid.dto;
 
 public class PagedMessagesRequest {
 
-    private final Long from;
-    private final Integer pageSize;
+    private long from;
+    private int pageSize;
 
-    public PagedMessagesRequest(Long from, Integer pageSize) {
+    public PagedMessagesRequest() {
+    }
+
+    public PagedMessagesRequest(long from, int pageSize) {
         this.from = from;
         this.pageSize = pageSize;
     }
 
-    public Long getFrom() { return from; }
+    public long getFrom() {
+        return from;
+    }
 
-    public Integer getPageSize() { return pageSize; }
+    public void setFrom(long from) {
+        this.from = from;
+    }
 
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    @Override
+    public String toString() {
+        return "PagedMessagesRequest{" +
+                "from=" + from +
+                ", pageSize=" + pageSize +
+                '}';
+    }
 }

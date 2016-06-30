@@ -2,16 +2,38 @@ package com.wolkabout.wolkrestandroid.dto;
 
 public class FeedSetting {
 
-    private final Integer id;
-    private final Integer order;
+    private int id;
+    private int order;
 
-    public FeedSetting(Integer id, Integer order) {
+    public FeedSetting() {
+    }
+
+    public FeedSetting(int id, int order) {
         this.id = id;
         this.order = order;
     }
 
-    public Integer getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public Integer getOrder() { return order; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedSetting{" +
+                "id=" + id +
+                ", order=" + order +
+                '}';
+    }
 }

@@ -4,24 +4,60 @@ import com.wolkabout.wolkrestandroid.enumeration.Range;
 
 public class ExistingReportRequest {
 
-    private final Integer reportId;
-    private final Long from;
-    private final Long to;
-    private final Range range;
+    private int reportId;
+    private Long from;
+    private long to;
+    private Range range;
 
-    public ExistingReportRequest(Integer reportId, Long from, Long to, Range range) {
+    public ExistingReportRequest() {
+    }
+
+    public ExistingReportRequest(int reportId, Long from, long to, Range range) {
         this.reportId = reportId;
         this.from = from;
         this.to = to;
         this.range = range;
     }
 
-    public Integer getReportId() { return reportId; }
+    public int getReportId() {
+        return reportId;
+    }
 
-    public Long getFrom() { return from; }
+    public void setReportId(int reportId) {
+        this.reportId = reportId;
+    }
 
-    public Long getTo() { return to; }
+    public Long getFrom() {
+        return from;
+    }
 
-    public Range getRange() { return range; }
+    public void setFrom(Long from) {
+        this.from = from;
+    }
 
+    public long getTo() {
+        return to;
+    }
+
+    public void setTo(long to) {
+        this.to = to;
+    }
+
+    public Range getRange() {
+        return range;
+    }
+
+    public void setRange(Range range) {
+        this.range = range;
+    }
+
+    @Override
+    public String toString() {
+        return "ExistingReportRequest{" +
+                "reportId=" + reportId +
+                ", from=" + from +
+                ", to=" + to +
+                ", range=" + range +
+                '}';
+    }
 }

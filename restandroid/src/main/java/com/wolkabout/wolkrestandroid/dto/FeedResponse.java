@@ -5,20 +5,23 @@ import com.wolkabout.wolkrestandroid.enumeration.Trend;
 
 public class FeedResponse {
 
-    private final Integer id;
-    private final String readingType;
-    private final String currentValue;
-    private final AlarmState alarmState;
-    private final String alarmHigh;
-    private final Boolean alarmHighEnabled;
-    private final String alarmLow;
-    private final Boolean alarmLowEnabled;
-    private final Trend trend;
-    private final Boolean enabled;
-    private final Boolean visible;
-    private final Integer order;
+    private int id;
+    private String readingType;
+    private String currentValue;
+    private AlarmState alarmState;
+    private String alarmHigh;
+    private boolean alarmHighEnabled;
+    private String alarmLow;
+    private boolean alarmLowEnabled;
+    private Trend trend;
+    private boolean enabled;
+    private boolean visible;
+    private int order;
 
-    public FeedResponse(Integer id, String readingType, String currentValue, AlarmState alarmState, String alarmHigh, Boolean alarmHighEnabled, String alarmLow, Boolean alarmLowEnabled, Trend trend, Boolean enabled, Boolean visible, Integer order) {
+    public FeedResponse() {
+    }
+
+    public FeedResponse(int id, String readingType, String currentValue, AlarmState alarmState, String alarmHigh, boolean alarmHighEnabled, String alarmLow, boolean alarmLowEnabled, Trend trend, boolean enabled, boolean visible, int order) {
         this.id = id;
         this.readingType = readingType;
         this.currentValue = currentValue;
@@ -33,29 +36,117 @@ public class FeedResponse {
         this.order = order;
     }
 
-    public Integer getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getReadingType() { return readingType; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getCurrentValue() { return currentValue; }
+    public String getReadingType() {
+        return readingType;
+    }
 
-    public AlarmState getAlarmState() { return alarmState; }
+    public void setReadingType(String readingType) {
+        this.readingType = readingType;
+    }
 
-    public String getAlarmHigh() { return alarmHigh; }
+    public String getCurrentValue() {
+        return currentValue;
+    }
 
-    public Boolean getAlarmHighEnabled() { return alarmHighEnabled; }
+    public void setCurrentValue(String currentValue) {
+        this.currentValue = currentValue;
+    }
 
-    public String getAlarmLow() { return alarmLow; }
+    public AlarmState getAlarmState() {
+        return alarmState;
+    }
 
-    public Boolean getAlarmLowEnabled() { return alarmLowEnabled; }
+    public void setAlarmState(AlarmState alarmState) {
+        this.alarmState = alarmState;
+    }
 
-    public Trend getTrend() { return trend; }
+    public String getAlarmHigh() {
+        return alarmHigh;
+    }
 
-    public Boolean getEnabled() { return enabled; }
+    public void setAlarmHigh(String alarmHigh) {
+        this.alarmHigh = alarmHigh;
+    }
 
-    public Boolean getVisible() { return visible; }
+    public boolean isAlarmHighEnabled() {
+        return alarmHighEnabled;
+    }
 
-    public Integer getOrder() { return order; }
+    public void setAlarmHighEnabled(boolean alarmHighEnabled) {
+        this.alarmHighEnabled = alarmHighEnabled;
+    }
 
+    public String getAlarmLow() {
+        return alarmLow;
+    }
 
+    public void setAlarmLow(String alarmLow) {
+        this.alarmLow = alarmLow;
+    }
+
+    public boolean isAlarmLowEnabled() {
+        return alarmLowEnabled;
+    }
+
+    public void setAlarmLowEnabled(boolean alarmLowEnabled) {
+        this.alarmLowEnabled = alarmLowEnabled;
+    }
+
+    public Trend getTrend() {
+        return trend;
+    }
+
+    public void setTrend(Trend trend) {
+        this.trend = trend;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedResponse{" +
+                "id=" + id +
+                ", readingType='" + readingType + '\'' +
+                ", currentValue='" + currentValue + '\'' +
+                ", alarmState=" + alarmState +
+                ", alarmHigh='" + alarmHigh + '\'' +
+                ", alarmHighEnabled=" + alarmHighEnabled +
+                ", alarmLow='" + alarmLow + '\'' +
+                ", alarmLowEnabled=" + alarmLowEnabled +
+                ", trend=" + trend +
+                ", enabled=" + enabled +
+                ", visible=" + visible +
+                ", order=" + order +
+                '}';
+    }
 }

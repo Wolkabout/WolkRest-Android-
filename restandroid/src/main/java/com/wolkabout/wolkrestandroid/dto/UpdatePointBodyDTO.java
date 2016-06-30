@@ -4,20 +4,49 @@ import java.util.List;
 
 public class UpdatePointBodyDTO {
 
-    private final String name;
-    private final Integer heartbeat;
-    private final List<FeedConfig> feeds;
+    private String name;
+    private int heartbeat;
+    private List<FeedConfig> feeds;
 
-    public UpdatePointBodyDTO(String name, Integer heartbeat, List<FeedConfig> feeds) {
+    public UpdatePointBodyDTO() {
+    }
+
+    public UpdatePointBodyDTO(String name, int heartbeat, List<FeedConfig> feeds) {
         this.name = name;
         this.heartbeat = heartbeat;
         this.feeds = feeds;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public Integer getHeartbeat() { return heartbeat; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public List<FeedConfig> getFeeds() { return feeds; }
+    public int getHeartbeat() {
+        return heartbeat;
+    }
 
+    public void setHeartbeat(int heartbeat) {
+        this.heartbeat = heartbeat;
+    }
+
+    public List<FeedConfig> getFeeds() {
+        return feeds;
+    }
+
+    public void setFeeds(List<FeedConfig> feeds) {
+        this.feeds = feeds;
+    }
+
+    @Override
+    public String toString() {
+        return "UpdatePointBodyDTO{" +
+                "name='" + name + '\'' +
+                ", heartbeat=" + heartbeat +
+                ", feeds=" + feeds +
+                '}';
+    }
 }

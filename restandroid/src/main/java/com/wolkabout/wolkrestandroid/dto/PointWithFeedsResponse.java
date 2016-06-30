@@ -1,53 +1,144 @@
 package com.wolkabout.wolkrestandroid.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wolkabout.wolkrestandroid.enumeration.DeviceState;
 
 import java.util.List;
 
+@JsonIgnoreProperties("actuators")
 public class PointWithFeedsResponse {
 
-    private final String name;
-    private final Integer id;
-    private final Integer currentBatteryState;
-    private final Long activationTimestamp;
-    private final String deviceSerial;
-    private final DeviceState deviceState;
-    private final Integer batteryState;
-    private final Integer heartbeat;
-    private final Long lastReportTimestamp;
-    private final List<FeedResponse> feeds;
+    private String name;
+    private int id;
+    private int currentBatteryState;
+    private long activationTimestamp;
+    private String deviceSerial;
+    private DeviceState deviceState;
+    private int batteryState;
+    private int heartbeat;
+    private long lastReportTimestamp;
+    private List<FeedResponse> feeds;
+    private String owner;
 
-    public PointWithFeedsResponse(String name, Integer id, Integer currentBatteryState, Long activationTimestamp, DeviceState deviceState, String deviceSerial, Integer batteryState, Integer heartbeat, Long lastReportTimestamp, List<FeedResponse> feeds) {
+    public PointWithFeedsResponse() {
+    }
+
+    public PointWithFeedsResponse(String name, int id, int currentBatteryState, long activationTimestamp, String deviceSerial, DeviceState deviceState, int batteryState, int heartbeat, long lastReportTimestamp, List<FeedResponse> feeds, String owner) {
         this.name = name;
         this.id = id;
         this.currentBatteryState = currentBatteryState;
         this.activationTimestamp = activationTimestamp;
-        this.deviceState = deviceState;
         this.deviceSerial = deviceSerial;
+        this.deviceState = deviceState;
         this.batteryState = batteryState;
         this.heartbeat = heartbeat;
         this.lastReportTimestamp = lastReportTimestamp;
         this.feeds = feeds;
+        this.owner = owner;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public Integer getId() { return id; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Integer getCurrentBatteryState() { return currentBatteryState; }
+    public int getId() {
+        return id;
+    }
 
-    public Long getActivationTimestamp() { return activationTimestamp; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public DeviceState getDeviceState() { return deviceState; }
+    public int getCurrentBatteryState() {
+        return currentBatteryState;
+    }
 
-    public String getDeviceSerial() { return deviceSerial; }
+    public void setCurrentBatteryState(int currentBatteryState) {
+        this.currentBatteryState = currentBatteryState;
+    }
 
-    public Integer getBatteryState() { return batteryState; }
+    public long getActivationTimestamp() {
+        return activationTimestamp;
+    }
 
-    public Integer getHeartbeat() { return heartbeat; }
+    public void setActivationTimestamp(long activationTimestamp) {
+        this.activationTimestamp = activationTimestamp;
+    }
 
-    public Long getLastReportTimestamp() { return lastReportTimestamp; }
+    public String getDeviceSerial() {
+        return deviceSerial;
+    }
 
-    public List<FeedResponse> getFeeds() { return feeds; }
+    public void setDeviceSerial(String deviceSerial) {
+        this.deviceSerial = deviceSerial;
+    }
 
+    public DeviceState getDeviceState() {
+        return deviceState;
+    }
+
+    public void setDeviceState(DeviceState deviceState) {
+        this.deviceState = deviceState;
+    }
+
+    public int getBatteryState() {
+        return batteryState;
+    }
+
+    public void setBatteryState(int batteryState) {
+        this.batteryState = batteryState;
+    }
+
+    public int getHeartbeat() {
+        return heartbeat;
+    }
+
+    public void setHeartbeat(int heartbeat) {
+        this.heartbeat = heartbeat;
+    }
+
+    public long getLastReportTimestamp() {
+        return lastReportTimestamp;
+    }
+
+    public void setLastReportTimestamp(long lastReportTimestamp) {
+        this.lastReportTimestamp = lastReportTimestamp;
+    }
+
+    public List<FeedResponse> getFeeds() {
+        return feeds;
+    }
+
+    public void setFeeds(List<FeedResponse> feeds) {
+        this.feeds = feeds;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "PointWithFeedsResponse{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", currentBatteryState=" + currentBatteryState +
+                ", activationTimestamp=" + activationTimestamp +
+                ", deviceSerial='" + deviceSerial + '\'' +
+                ", deviceState=" + deviceState +
+                ", batteryState=" + batteryState +
+                ", heartbeat=" + heartbeat +
+                ", lastReportTimestamp=" + lastReportTimestamp +
+                ", feeds=" + feeds +
+                ", owner='" + owner + '\'' +
+                '}';
+    }
 }

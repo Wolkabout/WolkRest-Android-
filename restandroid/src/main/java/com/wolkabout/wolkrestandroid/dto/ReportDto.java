@@ -6,14 +6,17 @@ import java.util.List;
 
 public class ReportDto {
 
-    private final Integer id;
-    private final String name;
-    private final Range range;
-    private final String settings;
-    private final List<Integer> feeds;
-    private final String readingType;
+    private int id;
+    private String name;
+    private Range range;
+    private String settings;
+    private List<Integer> feeds;
+    private String readingType;
 
-    public ReportDto(Integer id, String name, Range range, String settings, List<Integer> feeds, String readingType) {
+    public ReportDto() {
+    }
+
+    public ReportDto(int id, String name, Range range, String settings, List<Integer> feeds, String readingType) {
         this.id = id;
         this.name = name;
         this.range = range;
@@ -22,16 +25,63 @@ public class ReportDto {
         this.readingType = readingType;
     }
 
-    public Integer getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public Range getRange() { return range; }
+    public String getName() {
+        return name;
+    }
 
-    public String getSettings() { return settings; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public List<Integer> getFeeds() { return feeds; }
+    public Range getRange() {
+        return range;
+    }
 
-    public String getReadingType() { return readingType; }
+    public void setRange(Range range) {
+        this.range = range;
+    }
 
+    public String getSettings() {
+        return settings;
+    }
+
+    public void setSettings(String settings) {
+        this.settings = settings;
+    }
+
+    public List<Integer> getFeeds() {
+        return feeds;
+    }
+
+    public void setFeeds(List<Integer> feeds) {
+        this.feeds = feeds;
+    }
+
+    public String getReadingType() {
+        return readingType;
+    }
+
+    public void setReadingType(String readingType) {
+        this.readingType = readingType;
+    }
+
+    @Override
+    public String toString() {
+        return "ReportDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", range=" + range +
+                ", settings='" + settings + '\'' +
+                ", feeds=" + feeds +
+                ", readingType='" + readingType + '\'' +
+                '}';
+    }
 }
