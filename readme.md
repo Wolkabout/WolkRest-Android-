@@ -1,7 +1,7 @@
 # WolkRest
 
 REST library written to be used in android applications for WolkAbout Smart IoT Cloud.
-This version requires Android Annotations 4.0.0
+This version requires [Android Annotations 4.0.0](https://github.com/excilys/androidannotations/wiki)
 
 You can import it in your project using gradle or maven configurations below.
 
@@ -10,9 +10,7 @@ Gradle
 
 ```sh
 repositories {
-    maven {
-        url  "http://dl.bintray.com/wolkabout/maven"
-    }
+    jcenter()
 }
 
 dependencies {
@@ -23,9 +21,8 @@ Maven
 -----
 ```sh
 <repository>
-    <id>bintray-wolkabout-WolkConnector</id>
-    <name>bintray</name>
-    <url>http://dl.bintray.com/wolkabout/maven</url>
+  <id>jcenter</id>
+  <url>http://jcenter.bintray.com </url>
 </repository>
 
 <dependency>
