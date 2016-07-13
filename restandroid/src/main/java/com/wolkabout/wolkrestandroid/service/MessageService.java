@@ -2,6 +2,7 @@ package com.wolkabout.wolkrestandroid.service;
 
 import com.wolkabout.wolkrestandroid.AuthenticationInterceptor;
 import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
+import com.wolkabout.wolkrestandroid.MessageConverter;
 import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.AcknowledgeMessageRequest;
 import com.wolkabout.wolkrestandroid.dto.CountDto;
@@ -12,15 +13,15 @@ import org.androidannotations.rest.spring.annotations.Get;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Put;
 import org.androidannotations.rest.spring.annotations.Rest;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
 import java.util.List;
 
 @Rest(rootUrl = Preferences.HOST + "/v2/messages",
-        converters = MappingJackson2HttpMessageConverter.class,
+        converters = MessageConverter.class,
         interceptors = AuthenticationInterceptor.class,
         responseErrorHandler = DefaultErrorHandler.class)
-public interface MessageService {
+public interface MessageService extends RestClientErrorHandling {
 
     /**
      * Method: PUT <br>

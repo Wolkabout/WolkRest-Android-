@@ -22,8 +22,6 @@ public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
 
     private static final String AUTHORIZATION = "Authorization";
 
-    private static final int TIME_BEFORE_EXPIRATION = 5 * 24 * 60 * 60 * 1000; // 5 days
-
     @Pref
     Credentials_ credentials;
 
@@ -32,29 +30,35 @@ public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+        if (shouldRenewAccessToken()) {
+            refreshToken();
+        }
+
         if (credentials.accessToken().exists()) {
             final HttpHeaders headers = request.getHeaders();
             headers.set(AUTHORIZATION, credentials.accessToken().get());
-        }
-
-        if (shouldRenewAccessToken()) {
-            refreshToken();
         }
 
         return execution.execute(request, body);
     }
 
     private boolean shouldRenewAccessToken() {
-        if (!credentials.refreshTokenExpires().exists()) {
+        if (!credentials.accessToken().exists()) {
             return false;
         }
 
-        final long expirationTime = credentials.refreshTokenExpires().get();
-        final Date renewalDate = new Date(expirationTime - TIME_BEFORE_EXPIRATION);
-        return new Date().after(renewalDate);
+        final Date now = new Date();
+
+        final Date refreshTokenExpiration = new Date(credentials.refreshTokenExpires().get());
+        if (refreshTokenExpiration.before(now)) {
+            credentials.clear();
+            return false;
+        }
+
+        final long expirationTime = credentials.accessTokenExpires().get();
+        return new Date(expirationTime).before(now);
     }
 
-    @Background
     void refreshToken() {
         final AuthenticationResponseDto response = authenticationService.refreshToken(new RefreshTokenDto(credentials.refreshToken().get()));
         credentials.accessToken().put(response.getAccessToken());

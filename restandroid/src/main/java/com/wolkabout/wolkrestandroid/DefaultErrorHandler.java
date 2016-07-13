@@ -37,6 +37,7 @@ public class DefaultErrorHandler implements ResponseErrorHandler {
     public void handleError(ClientHttpResponse response) throws IOException {
         if (errorHandler == null) {
             Log.e(TAG, "Error handler not set.");
+            return;
         }
 
         if (response.getStatusCode() == HttpStatus.UNAUTHORIZED) {
