@@ -24,11 +24,11 @@ public interface AuthenticationService extends RestClientErrorHandling {
 
     /**
      * Method: POST <br>
-     * URL: /signUp
+     * URL: /v2/signUp
      *
      * @param signUpDto {@link SignUpDto} request body
      */
-    @Post("/signUp")
+    @Post("/v2/signUp")
     void signUp(@Body SignUpDto signUpDto);
 
     /**

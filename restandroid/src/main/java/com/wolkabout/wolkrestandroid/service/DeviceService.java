@@ -5,8 +5,11 @@ import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
 import com.wolkabout.wolkrestandroid.MessageConverter;
 import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.CreatePointBodyDTO;
+import com.wolkabout.wolkrestandroid.dto.CreatedPointDto;
 import com.wolkabout.wolkrestandroid.dto.DeviceStatusResponse;
+import com.wolkabout.wolkrestandroid.dto.SerialDto;
 import com.wolkabout.wolkrestandroid.dto.SerialNumberRequest;
+import com.wolkabout.wolkrestandroid.enumeration.SensorType;
 
 import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Delete;
@@ -17,7 +20,9 @@ import org.androidannotations.rest.spring.annotations.Put;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
-@Rest(rootUrl = Preferences.HOST + "/v2/devices",
+import java.util.List;
+
+@Rest(rootUrl = Preferences.HOST,
         converters = MessageConverter.class,
         interceptors = AuthenticationInterceptor.class,
         responseErrorHandler = DefaultErrorHandler.class)
@@ -30,7 +35,7 @@ public interface DeviceService extends RestClientErrorHandling {
      * @param serialNumber String path parameter
      * @return {@link DeviceStatusResponse}
      */
-    @Get("/{serialNumber}/activation_status")
+    @Get("/v2/devices/{serialNumber}/activation_status")
     DeviceStatusResponse getDeviceStatus(@Path String serialNumber);
 
     /**
@@ -40,7 +45,7 @@ public interface DeviceService extends RestClientErrorHandling {
      * @param serialNumber String path variable
      * @param createPointBodyDTO {@link CreatePointBodyDTO} request body
      */
-    @Post("/{serialNumber}")
+    @Post("/v2/devices/{serialNumber}")
     void createPoint(@Path String serialNumber, @Body CreatePointBodyDTO createPointBodyDTO);
 
     /**
@@ -50,7 +55,7 @@ public interface DeviceService extends RestClientErrorHandling {
      * @param serialNumber String path parameter
      * @param serialNumberRequest {@link SerialNumberRequest} passed as request body.
      */
-    @Put("/{serialNumber}/workingStatus")
+    @Put("/v2/devices/{serialNumber}/workingStatus")
     void turnOffDevice(@Path String serialNumber, @Body SerialNumberRequest serialNumberRequest);
 
     /**
@@ -58,7 +63,27 @@ public interface DeviceService extends RestClientErrorHandling {
      * URL: /v2/devices/{serialNumber}
      * @param serialNumber String path parameter
      */
-    @Delete("/{serialNumber}")
+    @Delete("/v2/devices/{serialNumber}")
     void deactivateDevice(@Path String serialNumber);
+
+    /**
+     * Method: GET <br>
+     * URL: /v2/devices/{serialNumber}/activation_status
+     *
+     * @param type enum {@link SensorType} path parameter
+     * @return {@link DeviceStatusResponse}
+     */
+    @Get("/v3/devices/random_serial?type={type}")
+    SerialDto getRandomSerial(@Path SensorType type);
+
+    /**
+     * Method: POST <br>
+     * URL: /v2/devices/{serialNumber}
+     *
+     * @param serialNumber String path variable
+     * @param bodyDTOs A list of {@link CreatePointBodyDTO}s request body
+     */
+    @Post("/v3/devices/{serialNumber}/config")
+    List<CreatedPointDto> createPointWithThings(@Path String serialNumber, @Body List<CreatePointBodyDTO> bodyDTOs);
 
 }
