@@ -16,6 +16,8 @@ import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 @EBean
 public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
@@ -28,11 +30,11 @@ public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
     @RestService
     AuthenticationService authenticationService;
 
+    private static ReentrantLock lock = new ReentrantLock();
+
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        if (shouldRenewAccessToken()) {
-            refreshToken();
-        }
+        checkCredentials();
 
         if (credentials.accessToken().exists()) {
             final HttpHeaders headers = request.getHeaders();
@@ -40,6 +42,17 @@ public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
         }
 
         return execution.execute(request, body);
+    }
+
+    private synchronized void checkCredentials() {
+        lock.lock();
+        try {
+            if (shouldRenewAccessToken()) {
+                refreshToken();
+            }
+        } finally {
+            lock.unlock();
+        }
     }
 
     private boolean shouldRenewAccessToken() {
@@ -59,7 +72,7 @@ public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
         return new Date(expirationTime).before(now);
     }
 
-    void refreshToken() {
+    private void refreshToken() {
         final AuthenticationResponseDto response = authenticationService.refreshToken(new RefreshTokenDto(credentials.refreshToken().get()));
         credentials.accessToken().put(response.getAccessToken());
         credentials.accessTokenExpires().put(response.getAccessTokenExpires().getTime());

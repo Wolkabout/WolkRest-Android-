@@ -1,6 +1,5 @@
 package com.wolkabout.wolkrestandroid.service;
 
-import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
 import com.wolkabout.wolkrestandroid.MessageConverter;
 import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.AccessTokenDto;
@@ -18,8 +17,7 @@ import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
 @Rest(rootUrl = Preferences.HOST,
-        converters = MessageConverter.class,
-        responseErrorHandler = DefaultErrorHandler.class)
+        converters = MessageConverter.class)
 public interface AuthenticationService extends RestClientErrorHandling {
 
     /**
