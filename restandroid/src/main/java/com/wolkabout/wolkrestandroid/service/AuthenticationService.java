@@ -1,7 +1,7 @@
 package com.wolkabout.wolkrestandroid.service;
 
+import com.wolkabout.restandroid.BuildConfig;
 import com.wolkabout.wolkrestandroid.MessageConverter;
-import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.AccessTokenDto;
 import com.wolkabout.wolkrestandroid.dto.AuthenticationResponseDto;
 import com.wolkabout.wolkrestandroid.dto.ChangePasswordRequest;
@@ -16,7 +16,7 @@ import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
-@Rest(rootUrl = Preferences.HOST,
+@Rest(rootUrl = BuildConfig.HOST,
         converters = MessageConverter.class)
 public interface AuthenticationService extends RestClientErrorHandling {
 
