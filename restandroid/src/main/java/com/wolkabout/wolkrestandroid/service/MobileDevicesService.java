@@ -1,9 +1,9 @@
 package com.wolkabout.wolkrestandroid.service;
 
+import com.wolkabout.restandroid.BuildConfig;
 import com.wolkabout.wolkrestandroid.AuthenticationInterceptor;
 import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
 import com.wolkabout.wolkrestandroid.MessageConverter;
-import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.MobileDeviceRequest;
 import com.wolkabout.wolkrestandroid.enumeration.MobileDeviceType;
 
@@ -14,7 +14,7 @@ import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
-@Rest(rootUrl = Preferences.HOST + "/v2/mobile-devices",
+@Rest(rootUrl = BuildConfig.HOST + "/v2/mobile-devices",
         converters = MessageConverter.class,
         interceptors = AuthenticationInterceptor.class,
         responseErrorHandler = DefaultErrorHandler.class)

@@ -1,9 +1,9 @@
 package com.wolkabout.wolkrestandroid.service;
 
+import com.wolkabout.restandroid.BuildConfig;
 import com.wolkabout.wolkrestandroid.AuthenticationInterceptor;
 import com.wolkabout.wolkrestandroid.DefaultErrorHandler;
 import com.wolkabout.wolkrestandroid.MessageConverter;
-import com.wolkabout.wolkrestandroid.Preferences;
 import com.wolkabout.wolkrestandroid.dto.UserSettingDto;
 import com.wolkabout.wolkrestandroid.dto.UserSettingsDto;
 
@@ -15,7 +15,7 @@ import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
 import java.util.List;
 
-@Rest(rootUrl = Preferences.HOST + "/v2/settings",
+@Rest(rootUrl = BuildConfig.HOST + "/v2/settings",
         converters = MessageConverter.class,
         interceptors = AuthenticationInterceptor.class,
         responseErrorHandler = DefaultErrorHandler.class)
