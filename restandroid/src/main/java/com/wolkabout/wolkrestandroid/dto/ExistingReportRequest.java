@@ -1,7 +1,9 @@
 package com.wolkabout.wolkrestandroid.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wolkabout.wolkrestandroid.enumeration.Range;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ExistingReportRequest {
 
     private int reportId;

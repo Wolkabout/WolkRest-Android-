@@ -5,7 +5,7 @@ import com.wolkabout.wolkrestandroid.enumeration.DeviceState;
 
 import java.util.List;
 
-@JsonIgnoreProperties("actuators")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PointWithFeedsResponse {
 
     private String name;
@@ -19,11 +19,12 @@ public class PointWithFeedsResponse {
     private long lastReportTimestamp;
     private List<FeedResponse> feeds;
     private String owner;
+    private String firmwareVersion;
 
     public PointWithFeedsResponse() {
     }
 
-    public PointWithFeedsResponse(String name, int id, int currentBatteryState, long activationTimestamp, String deviceSerial, DeviceState deviceState, int batteryState, int heartbeat, long lastReportTimestamp, List<FeedResponse> feeds, String owner) {
+    public PointWithFeedsResponse(String name, int id, int currentBatteryState, long activationTimestamp, String deviceSerial, DeviceState deviceState, int batteryState, int heartbeat, long lastReportTimestamp, List<FeedResponse> feeds, String owner, String firmwareVersion) {
         this.name = name;
         this.id = id;
         this.currentBatteryState = currentBatteryState;
@@ -35,6 +36,7 @@ public class PointWithFeedsResponse {
         this.lastReportTimestamp = lastReportTimestamp;
         this.feeds = feeds;
         this.owner = owner;
+        this.firmwareVersion = firmwareVersion;
     }
 
     public String getName() {
@@ -125,6 +127,14 @@ public class PointWithFeedsResponse {
         this.owner = owner;
     }
 
+    public String getFirmwareVersion() {
+        return firmwareVersion;
+    }
+
+    public void setFirmwareVersion(String firmwareVersion) {
+        this.firmwareVersion = firmwareVersion;
+    }
+
     @Override
     public String toString() {
         return "PointWithFeedsResponse{" +
@@ -139,6 +149,7 @@ public class PointWithFeedsResponse {
                 ", lastReportTimestamp=" + lastReportTimestamp +
                 ", feeds=" + feeds +
                 ", owner='" + owner + '\'' +
+                ", firmwareVersion=" + firmwareVersion +
                 '}';
     }
 }

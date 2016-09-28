@@ -1,7 +1,9 @@
 package com.wolkabout.wolkrestandroid.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wolkabout.wolkrestandroid.enumeration.MobileDeviceType;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MobileDeviceRequest {
 
     private String deviceId;

@@ -1,9 +1,11 @@
 package com.wolkabout.wolkrestandroid.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wolkabout.wolkrestandroid.enumeration.UserRole;
 
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthenticationResponseDto {
 
     private String email;

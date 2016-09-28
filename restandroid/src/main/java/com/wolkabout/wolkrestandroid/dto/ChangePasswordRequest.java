@@ -1,5 +1,8 @@
 package com.wolkabout.wolkrestandroid.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChangePasswordRequest {
 
     private String email;

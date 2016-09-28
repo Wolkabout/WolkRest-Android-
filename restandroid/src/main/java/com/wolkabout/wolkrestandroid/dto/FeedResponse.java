@@ -1,8 +1,10 @@
 package com.wolkabout.wolkrestandroid.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wolkabout.wolkrestandroid.enumeration.AlarmState;
 import com.wolkabout.wolkrestandroid.enumeration.Trend;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FeedResponse {
 
     private int id;
