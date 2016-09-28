@@ -28,7 +28,7 @@ Maven
 <dependency>
   <groupId>com.wolkabout</groupId>
   <artifactId>restandroid</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.1.Release</version>
   <type>pom</type>
 </dependency>
 ```
