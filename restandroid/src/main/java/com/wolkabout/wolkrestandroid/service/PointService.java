@@ -26,11 +26,11 @@ public interface PointService extends RestClientErrorHandling {
 
     /**
      * Method: GET <br>
-     * URL: /v3/points
+     * URL: /v4/points
      *
      * @return A list of {@link PointWithFeedsResponse}s
      */
-    @Get("/v3/points")
+    @Get("/v4/points")
     List<PointWithFeedsResponse> getPoints();
 
     /**
