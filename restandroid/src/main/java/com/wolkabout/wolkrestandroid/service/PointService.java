@@ -46,42 +46,42 @@ public interface PointService extends RestClientErrorHandling {
 
     /**
      * Method: GET <br>
-     * URL: /v2/points/{id}/messages?from={from}&to={to}
+     * URL: /v4/points/{id}/messages?from={from}&to={to}
      *
      * @param id Integer path variable
      * @param from Long request parameter representing a date
      * @param to Long request parameter representing a date
      * @return A list of {@link MessageResponse}s
      */
-    @Get("/v2/points/{id}/messages?from={from}&to={to}")
+    @Get("/v4/points/{id}/messages?from={from}&to={to}")
     List<MessageResponse> getUnreadMessagesForPoint(@Path int id, @Path long from, @Path long to);
 
     /**
      * Method: PUT <br>
-     * URL: /v2/points/{id}/messages
+     * URL: /v4/points/{id}/messages
      *
      * @param id Integer path variable
      */
-    @Put("/v2/points/{id}/messages")
+    @Put("/v4/points/{id}/messages")
     void acknowledgeUnreadMessagesForPoint(@Path int id);
 
     /**
      * Method: DELETE <br>
-     * URL: /v2/points/{id}
+     * URL: /v4/points/{id}
      *
      * @param id Integer path variable
      */
-    @Delete("/v2/points/{id}")
+    @Delete("/v4/points/{id}")
     void deletePoint(@Path int id);
 
     /**
      * Method: PUT <br>
-     * URL: /v2/points/{id}
+     * URL: /v4/points/{id}
      *
      * @param id Integer path variable
      * @param updatePointBodyDTO {@link UpdatePointBodyDTO} request body
      */
-    @Put("/v2/points/{id}")
+    @Put("/v4/points/{id}")
     void updatePoint(@Path int id, @Body UpdatePointBodyDTO updatePointBodyDTO);
 
 }
