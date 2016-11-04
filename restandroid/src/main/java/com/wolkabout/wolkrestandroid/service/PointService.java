@@ -35,12 +35,12 @@ public interface PointService extends RestClientErrorHandling {
 
     /**
      * Method: GET <br>
-     * URL: /v3/points/{id}
+     * URL: /v4/points/{id}
      *
      * @param id Integer path variable
      * @return {@link PointWithFeedsResponse}
      */
-    @Get("/v3/points/{id}")
+    @Get("/v4/points/{id}")
     PointWithFeedsResponse getPoint(@Path int id);
 
 
