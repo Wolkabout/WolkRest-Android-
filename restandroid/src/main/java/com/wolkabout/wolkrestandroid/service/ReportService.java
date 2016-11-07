@@ -29,11 +29,11 @@ public interface ReportService extends RestClientErrorHandling {
 
     /**
      * Method: GET <br>
-     * URL: /v2/reports
+     * URL: /v4/reports
      *
      * @return A list of {@link ReportDto}s
      */
-    @Get("/v2/reports")
+    @Get("/v4/reports")
     List<ReportDto> getReports();
 
     /**
@@ -67,17 +67,17 @@ public interface ReportService extends RestClientErrorHandling {
 
     /**
      * Method: GET <br>
-     * URL: /v2/reports/{id}
+     * URL: /v4/reports/{id}
      *
      * @param id Integer path variable
      * @return {@link ReportDto}
      */
-    @Get("/v2/reports/{id}")
+    @Get("/v4/reports/{id}")
     ReportDto getReport(@Path int id);
 
     /**
      * Method: GET <br>
-     * URL: /v2/reports/{id}/snapshot?from={from}&to={to}&range={range}
+     * URL: /v4/reports/{id}/snapshot?from={from}&to={to}&range={range}
      *
      * @param id Integer path variable
      * @param from Long request parameter representing a date
@@ -85,12 +85,12 @@ public interface ReportService extends RestClientErrorHandling {
      * @param range {@link Range} Enum String request parameter
      * @return A list of {@link FeedReportResponse}s
      */
-    @Get("/v2/reports/{id}/snapshot?from={from}&to={to}&range={range}")
+    @Get("/v4/reports/{id}/snapshot?from={from}&to={to}&range={range}")
     List<FeedReportResponse> getExistingReportSnapshot(@Path int id, @Path long from, @Path long to, @Path Range range);
 
     /**
      * Method: GET <br>
-     * URL: /v3/reports/snapshot?name={name}&from={from}&to={to}&range={range}&feeds={feeds}
+     * URL: /v4/reports/snapshot?name={name}&from={from}&to={to}&range={range}&feeds={feeds}
      *
      * @param name String request parameter
      * @param settings String request parameter
@@ -100,12 +100,12 @@ public interface ReportService extends RestClientErrorHandling {
      * @param feeds Integer request parameter
      * @return A list of {@link FeedReportResponse}s
      */
-    @Get("/v3/reports/snapshot?name={name}&settings={settings}&from={from}&to={to}&range={range}&feeds={feeds}")
+    @Get("/v4/reports/snapshot?name={name}&settings={settings}&from={from}&to={to}&range={range}&feeds={feeds}")
     List<FeedReportResponse> getReportSnapshot(@Path String name, @Path String settings, @Path long from, @Path long to, @Path Range range, @Path int feeds);
 
     /**
      * Method: GET <br>
-     * URL: /v3/reports/snapshot?name={name}&from={from}&to={to}&range={range}&feeds={feeds}
+     * URL: /v4/reports/snapshot?name={name}&from={from}&to={to}&range={range}&feeds={feeds}
      *
      * @param name String request parameter
      * @param settings String request parameter
@@ -115,7 +115,7 @@ public interface ReportService extends RestClientErrorHandling {
      * @param feeds String pre constructed request parameter (ex. feeds=1&feeds=2&feeds=3...)
      * @return A list of {@link FeedReportResponse}s
      */
-    @Get("/v3/reports/snapshot?name={name}&settings={settings}&from={from}&to={to}&range={range}&{feeds}")
+    @Get("/v4/reports/snapshot?name={name}&settings={settings}&from={from}&to={to}&range={range}&{feeds}")
     List<FeedReportResponse> getReportSnapshot(@Path String name, @Path String settings, @Path long from, @Path long to, @Path Range range, @Path String feeds);
 
 

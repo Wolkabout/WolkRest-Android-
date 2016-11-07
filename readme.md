@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.wolkabout:restandroid:1.1.5.RELEASE'
+    compile 'com.wolkabout:restandroid:1.1.6.RELEASE'
 }
 ```
 Maven
@@ -28,7 +28,7 @@ Maven
 <dependency>
   <groupId>com.wolkabout</groupId>
   <artifactId>restandroid</artifactId>
-  <version>1.1.5.RELEASE</version>
+  <version>1.1.6.RELEASE</version>
   <type>pom</type>
 </dependency>
 ```
