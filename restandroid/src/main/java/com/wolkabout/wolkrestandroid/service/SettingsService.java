@@ -15,7 +15,7 @@ import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
 import java.util.List;
 
-@Rest(rootUrl = BuildConfig.HOST + "/v2/settings",
+@Rest(rootUrl = BuildConfig.HOST,
         converters = MessageConverter.class,
         interceptors = AuthenticationInterceptor.class,
         responseErrorHandler = DefaultErrorHandler.class)
@@ -23,11 +23,11 @@ public interface SettingsService extends RestClientErrorHandling {
 
     /**
      * Method: GET <br>
-     * URL: /v2/settings
+     * URL: /v4/settings
      *
      * @return A list of {@link UserSettingDto}s
      */
-    @Get("")
+    @Get("/v4/settings")
     List<UserSettingDto> getUserSettings();
 
     /**
@@ -36,7 +36,7 @@ public interface SettingsService extends RestClientErrorHandling {
      *
      * @param userSettingDto {@link UserSettingsDto} request body
      */
-    @Put("")
+    @Put("/v2/settings")
     void updateUserSettings(@Body UserSettingsDto userSettingDto);
 
 }
