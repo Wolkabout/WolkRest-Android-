@@ -17,7 +17,7 @@ import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 
 import java.util.List;
 
-@Rest(rootUrl = BuildConfig.HOST + "/v2/messages",
+@Rest(rootUrl = BuildConfig.HOST,
         converters = MessageConverter.class,
         interceptors = AuthenticationInterceptor.class,
         responseErrorHandler = DefaultErrorHandler.class)
@@ -30,7 +30,7 @@ public interface MessageService extends RestClientErrorHandling {
      * @param id Integer path variable
      * @param request {@link AcknowledgeMessageRequest} request body
      */
-    @Put("/{id}")
+    @Put("/v2/messages/{id}")
     void acknowledgeUnreadMessage(@Path int id, @Body AcknowledgeMessageRequest request);
 
     /**
@@ -39,7 +39,7 @@ public interface MessageService extends RestClientErrorHandling {
      *
      * @return A list of {@link MessageWithNameDto}s
      */
-    @Get("/unread")
+    @Get("/v2/messages/unread")
     List<MessageWithNameDto> getAllUnreadMessages();
 
     /**
@@ -48,25 +48,25 @@ public interface MessageService extends RestClientErrorHandling {
      *
      * @return {@link CountDto}
      */
-    @Get("/unread/count")
+    @Get("/v2/messages/unread/count")
     CountDto getAllUnreadMessageCount();
 
     /**
      * Method: PUT <br>
      * URL: /v2/messages/unread
      */
-    @Put("/unread")
+    @Put("/v2/messages/unread")
     void aknowledgeAllUnreadMessages();
 
     /**
      * Method: GET <br>
-     * URL: /v2/messages?from={from}&pageSize={pageSize}
+     * URL: /v4/messages?from={from}&pageSize={pageSize}
      *
      * @param from Long request parameter representing a date
      * @param pageSize Integer request parameter
      * @return A list of {@link MessageWithNameDto}s
      */
-    @Get("?from={from}&pageSize={pageSize}")
+    @Get("/v4/messages?from={from}&pageSize={pageSize}")
     List<MessageWithNameDto> getMessagesForUserPaged(@Path long from, @Path int pageSize);
 
 }
