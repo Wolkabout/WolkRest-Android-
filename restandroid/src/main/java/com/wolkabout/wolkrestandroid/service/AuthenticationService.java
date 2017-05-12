@@ -68,11 +68,11 @@ public interface AuthenticationService extends RestClientErrorHandling {
 
     /**
      * Method: POST <br>
-     * URL: /change-password
+     * URL: /v2/change-password
      *
      * @param changePasswordRequest {@link ChangePasswordRequest} request body
      */
-    @Post("/change-password")
+    @Post("/v2/change-password")
     void changePassword(@Body ChangePasswordRequest changePasswordRequest);
 
     /**
