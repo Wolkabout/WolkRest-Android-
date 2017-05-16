@@ -5,25 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChangePasswordRequest {
 
-    private String email;
     private String oldPassword;
     private String newPassword;
 
     public ChangePasswordRequest() {
     }
 
-    public ChangePasswordRequest(String email, String oldPassword, String newPassword) {
-        this.email = email;
+    public ChangePasswordRequest(String oldPassword, String newPassword) {
         this.oldPassword = oldPassword;
         this.newPassword = newPassword;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getOldPassword() {
@@ -45,8 +35,7 @@ public class ChangePasswordRequest {
     @Override
     public String toString() {
         return "ChangePasswordRequest{" +
-                "email='" + email + '\'' +
-                ", oldPassword='" + oldPassword + '\'' +
+                "oldPassword='" + oldPassword + '\'' +
                 ", newPassword='" + newPassword + '\'' +
                 '}';
     }
